@@ -109,33 +109,33 @@ const promptTemplates = [
   {
     title: "Stats Card",
     prompt: `Build a React functional component named StatsCard with a clean, modern metrics display using Tailwind CSS.
-Container & Layout
-Card width: w-64 (~256px) with fixed height to match design balance.
-Background: solid white (bg-white).
-Rounded corners: extra-large (rounded-xl).
-Shadow: large soft shadow (shadow-lg).
-Padding: comfortable (p-6).
-Layout: vertical flex (flex flex-col items-start gap-4).
-Hover: slight lift and shadow deepening (hover:shadow-xl hover:scale-[1.02] transition-all duration-300 ease-out).
-Header (Label)
-Text: uppercase label such as "Monthly Revenue" or "Active Users".
-Font: small size (text-sm), bold (font-semibold).
-Color: muted gray (text-gray-500).
-Letter spacing: slight (tracking-wide).
-Main Stat
-Large, bold number in gradient text (text-4xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent).
-Optional trend indicator:
-Up arrow: ▲ in green (text-green-500).
-Down arrow: ▼ in red (text-red-500).
-Percentage change: small (text-sm font-medium), aligned next to arrow with slight left margin (ml-1).
-Footer (Additional Info)
-Text: small secondary detail like "Compared to last month" or "Updated 5 mins ago".
-Font: extra small (text-xs), medium weight (font-medium).
-Color: lighter gray (text-gray-400).
-Optional subtle icon (e.g., clock for “updated recently”) in muted gray before the text.
-Extras
-Entire card clickable (optional) with cursor-pointer and focus ring effect (focus:outline-none focus:ring-2 focus:ring-blue-400).
-Can optionally stack multiple StatsCard components in a grid (grid grid-cols-3 gap-6).`,
+        Container & Layout
+        Card width: w-64 (~256px) with fixed height to match design balance.
+        Background: solid white (bg-white).
+        Rounded corners: extra-large (rounded-xl).
+        Shadow: large soft shadow (shadow-lg).
+        Padding: comfortable (p-6).
+        Layout: vertical flex (flex flex-col items-start gap-4).
+        Hover: slight lift and shadow deepening (hover:shadow-xl hover:scale-[1.02] transition-all duration-300 ease-out).
+        Header (Label)
+        Text: uppercase label such as "Monthly Revenue" or "Active Users".
+        Font: small size (text-sm), bold (font-semibold).
+        Color: muted gray (text-gray-500).
+        Letter spacing: slight (tracking-wide).
+        Main Stat
+        Large, bold number in gradient text (text-4xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent).
+        Optional trend indicator:
+        Up arrow: ▲ in green (text-green-500).
+        Down arrow: ▼ in red (text-red-500).
+        Percentage change: small (text-sm font-medium), aligned next to arrow with slight left margin (ml-1).
+        Footer (Additional Info)
+        Text: small secondary detail like "Compared to last month" or "Updated 5 mins ago".
+        Font: extra small (text-xs), medium weight (font-medium).
+        Color: lighter gray (text-gray-400).
+        Optional subtle icon (e.g., clock for “updated recently”) in muted gray before the text.
+        Extras
+        Entire card clickable (optional) with cursor-pointer and focus ring effect (focus:outline-none focus:ring-2 focus:ring-blue-400).
+        Can optionally stack multiple StatsCard components in a grid (grid grid-cols-3 gap-6).`,
   },
 ];
 
@@ -207,10 +207,10 @@ function App() {
     <div className="bg-gray-900 min-h-screen text-white font-sans">
       <header className="bg-gray-800/70 backdrop-blur-lg border-b border-gray-700 p-4 sticky top-0 z-10">
         <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-transparent bg-clip-text">
-          LingoUI ✨
+          TailorUI ✨
         </h1>
         <p className="text-center text-gray-400 mt-1">
-          Describe a UI component, get live code and a preview.
+          UI, fitted to perfection.
         </p>
       </header>
 
