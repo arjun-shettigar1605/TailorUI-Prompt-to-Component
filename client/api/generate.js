@@ -1,12 +1,5 @@
 // api/generate.js
-// const { GoogleGenerativeAI } = require("@google/generative-ai");
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
-if (!process.env.GEMINI_API_KEY) {
-  throw new Error("GEMINI_API_KEY is not defined in environment variables");
-}
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 const cleanJsonString = (text) => {
   if (text.includes("```json")) {
@@ -81,8 +74,28 @@ export default ${componentName};`;
 };
 
 export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // Handle preflight requests
+  if (req.method === "OPTIONS") {
+    res.status(200).end();
+    return;
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  // Check for API key
+  if (!process.env.GEMINI_API_KEY) {
+    console.error("GEMINI_API_KEY is not defined in environment variables");
+    return res.status(500).json({
+      error: "Server configuration error",
+      details: "API key not configured",
+    });
   }
 
   const { description } = req.body;
@@ -93,6 +106,8 @@ export default async function handler(req, res) {
   let rawText = "";
 
   try {
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
     const masterPrompt = `
       You are a specialized API that converts user descriptions into a specific JSON format for a React UI generator. Your ONLY output must be a single, valid JSON object. Do not include any other text, explanations, apologies, or markdown formatting like \`\`\`json. Your response must begin with '{' and end with '}'.
 
