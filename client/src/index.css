@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tailwind-preview {
+  @apply bg-white text-black;
+}
+
+.tailwind-preview * {
+  @apply box-border;
+}
+
+.tailwind-preview button,
+.tailwind-preview input,
+.tailwind-preview textarea,
+.tailwind-preview select {
+  @apply focus:outline-none;
+}
