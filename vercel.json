@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "lingoui-backend/index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "lingoui-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "lingoui-backend/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/lingoui-frontend/dist/$1"
+    }
+  ]
+}
