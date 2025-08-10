@@ -1,20 +1,10 @@
-// lingoui-backend/index.js
-
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
+// api/generate.js
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const app = express();
-const PORT = process.env.PORT || 8000;
-
 if (!process.env.GEMINI_API_KEY) {
-  throw new Error("GEMINI_API_KEY is not defined in the .env file");
+  throw new Error("GEMINI_API_KEY is not defined in environment variables");
 }
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
-app.use(cors());
-app.use(express.json());
 
 const cleanJsonString = (text) => {
   if (text.includes("```json")) {
@@ -38,7 +28,7 @@ const cleanJsonString = (text) => {
 const buildElement = (element, indentationLevel = 0) => {
   const { type, props = {}, children } = element;
   const indent = "  ".repeat(indentationLevel);
-  
+
   // Properly handle self-closing tags
   const selfClosingTags = ["input", "img", "br", "hr"];
   if (selfClosingTags.includes(type)) {
@@ -88,8 +78,11 @@ export default ${componentName};`;
   return { displayCode, previewCode };
 };
 
-app.post("/api/generate", async (req, res) => {
-  console.log("Received request at /api/generate");
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
   const { description } = req.body;
   if (!description) {
     return res.status(400).json({ error: "Text description is required." });
@@ -136,15 +129,11 @@ app.post("/api/generate", async (req, res) => {
       10. Use consistent casing for props (camelCase)
       11. ALWAYS include a root container element
 
-      User Description: "{{USER_DESCRIPTION}}"
+      User Description: "${description}"
     `;
 
-    const finalPrompt = masterPrompt.replace(
-      "{{USER_DESCRIPTION}}",
-      description
-    );
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const result = await model.generateContent(finalPrompt);
+    const result = await model.generateContent(masterPrompt);
     const response = await result.response;
     rawText = response.text();
     console.log("Raw AI Response:", rawText);
@@ -165,11 +154,4 @@ app.post("/api/generate", async (req, res) => {
       aiResponse: rawText,
     });
   }
-});
-
-// app.listen(PORT, () => {
-//   console.log(`🚀 LingoUI server is running on http://localhost:${PORT}`);
-// });
-
-
-export default app;
+}
