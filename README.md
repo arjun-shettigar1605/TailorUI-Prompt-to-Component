@@ -1,12 +1,13 @@
-# LingoUI ✨
+# TailorUI ✨
 
 An AI-powered UI generator that translates natural language into production-ready React components, styled with Tailwind CSS and rendered with a live preview.
 
 ## Demo
 
-A picture is worth a thousand words. Here's LingoUI in action:
+A picture is worth a thousand words. Here's TailorUI in action:
 
-![LingoUI Demo GIF](https://i.imgur.com/gA3gY4j.gif)
+<img width="1892" height="861" alt="image" src="https://github.com/user-attachments/assets/79c0e524-099b-48f7-a81d-1f9062a5951e" />
+<img width="1892" height="869" alt="image" src="https://github.com/user-attachments/assets/28959a40-4a2e-4815-8823-1444a5b3fdfc" />
 
 ---
 
@@ -38,7 +39,7 @@ A picture is worth a thousand words. Here's LingoUI in action:
 
 ## 🏗️ System Architecture
 
-LingoUI operates on a client-server architecture designed for a seamless workflow:
+TailorUI operates on a client-server architecture designed for a seamless workflow:
 
 1.  **Client (React Frontend)**: The user types a description or selects a template and clicks "Generate." An API request containing the prompt is sent to the backend.
 2.  **Server (Node.js Backend)**:
@@ -76,12 +77,12 @@ To get a local copy up and running, follow these simple steps.
     ```
 2.  **Set up the Backend:**
     ```sh
-    cd lingoui-backend
+    cd Tailorui-backend
     npm install
     ```
 3.  **Set up the Frontend:**
     ```sh
-    cd ../lingoui-frontend
+    cd ../Tailorui-frontend
     npm install
     ```
 
@@ -89,10 +90,10 @@ To get a local copy up and running, follow these simple steps.
 
 The backend requires your Gemini API key to function.
 
-1.  In the `lingoui-backend` directory, create a new file named `.env`.
+1.  In the `Tailorui-backend` directory, create a new file named `.env`.
 2.  Add your API key to this file:
     ```env
-    # .env in lingoui-backend
+    # .env in Tailorui-backend
 
     GEMINI_API_KEY="YOUR_API_KEY_HERE"
     ```
@@ -102,14 +103,14 @@ The backend requires your Gemini API key to function.
 You'll need to run both the backend and frontend servers in separate terminal windows.
 
 1.  **Start the Backend Server:**
-    * Navigate to the `lingoui-backend` directory.
+    * Navigate to the `Tailorui-backend` directory.
     ```sh
     npm run dev
     ```
     Your server should now be running on `http://localhost:8000`.
 
 2.  **Start the Frontend Server:**
-    * Navigate to the `lingoui-frontend` directory.
+    * Navigate to the `Tailorui-frontend` directory.
     ```sh
     npm run dev
     ```
