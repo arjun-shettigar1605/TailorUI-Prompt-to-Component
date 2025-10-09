@@ -149,7 +149,7 @@ export default async function handler(req, res) {
       User Description: "${description}"
     `;
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
     const result = await model.generateContent(masterPrompt);
     const response = await result.response;
     rawText = response.text();
